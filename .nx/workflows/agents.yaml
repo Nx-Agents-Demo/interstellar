@@ -21,7 +21,7 @@ launch-templates:
             ~/.cache/Cypress
           BASE_BRANCH: 'main'
 
-      - name: Pnpm Install
+      - name: yarn Install
         script: |
           yarn install --frozen-lockfile
 

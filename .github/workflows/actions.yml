@@ -47,11 +47,12 @@ jobs:
       - name: Check out the default branch
         run: git branch --track main origin/main
 
-      - name: Initialize the Nx Cloud distributed CI run and stop agents when the e2e tasks are done
-        run: yarn nx-cloud start-ci-run --distribute-on="3 linux-large-custom" --stop-agents-after="e2e"
+      - name: Initialize the Nx Cloud distributed CI run
+        run: NX_CI_EXECUTION_ENV=main yarn nx-cloud start-ci-run --distribute-on="3 linux-large-custom"
+
+      - name: Initialize the Nx Cloud distributed CI run for e2e
+        run: NX_CI_EXECUTION_ENV=e2e yarn nx-cloud start-ci-run --distribute-on="6 linux-large-custom"
 
       - name: Run commands in parallel
-        run: yarn nx run-many -t build,test,lint --parallel=3
+        run: NX_CI_EXECUTION_ENV=main yarn nx run-many -t build,test,lint --parallel=3 & NX_CI_EXECUTION_ENV=e2e yarn nx run-many -t e2e-ci --parallel=1
 
-      - name: Run e2e serially
-        run: yarn nx run-many -t e2e --parallel=1

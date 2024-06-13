@@ -1,9 +1,7 @@
 {
-  "nxCloudAccessToken": "YmIwZmNmMjUtY2Q2NS00MTk2LWE1NWQtYzI2NDY4NzMwN2RjfHJlYWQtd3JpdGU=",
+  "nxCloudAccessToken": "NzNlMDdiNjUtMmRjMi00ODdjLWE5ZjktNmE5OGNhZjEyOWFkfHJlYWQtd3JpdGU=",
   "nxCloudUrl": "https://staging.nx.app",
-  "affected": {
-    "defaultBase": "origin/main"
-  },
+  "affected": { "defaultBase": "origin/main" },
   "namedInputs": {
     "default": ["sharedGlobals", "{projectRoot}/**/*"],
     "sharedGlobals": ["{workspaceRoot}/babel.config.json"],
@@ -17,9 +15,7 @@
     ]
   },
   "targetDefaults": {
-    "e2e": {
-      "cache": true
-    },
+    "e2e": { "cache": true },
     "@nx/next:build": {
       "cache": true,
       "inputs": ["production", "^production"],
@@ -28,16 +24,11 @@
         "outputPath": "dist/apps/{projectName}",
         "buildLibsFromSource": false
       },
-      "configurations": {
-        "production": {}
-      }
+      "configurations": { "production": {} }
     },
     "serve": {
       "executor": "@nx/next:server",
-      "options": {
-        "buildTarget": "{projectName}:build",
-        "dev": true
-      },
+      "options": { "buildTarget": "{projectName}:build", "dev": true },
       "configurations": {
         "production": {
           "buildTarget": "{projectName}:build:production",
@@ -61,9 +52,7 @@
       "cache": true,
       "inputs": ["default", "{workspaceRoot}/.eslintrc.json"],
       "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": ["{projectRoot}/**/*.{ts,tsx,js,jsx}"]
-      }
+      "options": { "lintFilePatterns": ["{projectRoot}/**/*.{ts,tsx,js,jsx}"] }
     },
     "test": {
       "cache": true,
